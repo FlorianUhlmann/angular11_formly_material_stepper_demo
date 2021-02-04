@@ -70,4 +70,8 @@ export class FormlyGridMaterialComponent  {
       ],
     },
   ];
+
+  submit() {
+    alert(JSON.stringify(this.model));
+  }
 }

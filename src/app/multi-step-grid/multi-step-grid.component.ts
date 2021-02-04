@@ -9,6 +9,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
  </form>
 
+
  `
 })
 export class MultiStepGridComponent  {
@@ -25,20 +26,19 @@ export class MultiStepGridComponent  {
         templateOptions: { label: 'Einstieg' },
         fieldGroup: [
           {
-            className: 'flex-3',
+            className: 'flex-item',
             type: 'input',
             key: 'Quadratmeter',
             templateOptions: {
               type: 'number',
               label: 'Quadratmeter'
-
             },
           },
         ]
       },
       {
-        templateOptions: { label: 'Absicherung' },
         fieldGroupClassName: 'display-flex',
+        templateOptions: { label: 'Absicherung' },
         fieldGroup: [
 
 
@@ -49,7 +49,6 @@ export class MultiStepGridComponent  {
             templateOptions: {
               type: 'date',
               label: 'Geburtsdatum'
-
             },
           },
         ],
@@ -60,7 +59,7 @@ export class MultiStepGridComponent  {
         fieldGroup: [
 
           {
-            className: 'col-5',
+            className: 'flex-1',
             fieldGroup: [
               {
                 type: 'input',
@@ -69,6 +68,7 @@ export class MultiStepGridComponent  {
                   label: 'First Name',
                 },
               },
+
               {
                 type: 'input',
                 key: 'lastName',
@@ -79,9 +79,10 @@ export class MultiStepGridComponent  {
             ],
           },
           {
-            className: 'col-6',
+            className: 'flex-1',
             fieldGroup: [
               {
+
                 type: 'input',
                 key: 'street',
                 templateOptions: {
@@ -109,6 +110,7 @@ export class MultiStepGridComponent  {
       },
       {
         templateOptions: { label: 'Zahlweise' },
+        className: 'flex-1',
         fieldGroup: [
           {
             key: 'day',

@@ -1,0 +1,43 @@
+.display-flex {
+  display: center;
+  flex:wrap;
+  margin: 2rem 0;
+  position: relative;
+  flex-direction: row;
+  flex-basis: auto;
+  justify-content: space-between;}
+
+.flex-1 { flex: 1; flex-basis: 50%; }
+
+.flex-2 { flex: 2; flex-basis: 50%; }
+
+.flex-3 { flex: 3; }
+
+.flex-4 { flex: 4; }
+
+.flex-5 { flex: 5; }
+
+.flex-6 { flex: 6; }
+
+[class*="flex-"] {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+[class*="flex-"]:first-child {
+  padding-left: 2fr;
+  padding-right: 2fr;
+}
+
+[class*="flex-"]:last-child {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.flex-item {
+  background-color: white;
+  width: 400px;
+  margin: 10px;
+  text-align: center;
+  line-height: 100px;
+  justify-content: center;
+}

@@ -22,8 +22,43 @@ export class MultiStepGridComponent  {
     fieldGroup: [
       {
         fieldGroupClassName: 'display-flex',
+        templateOptions: { label: 'Einstieg' },
+        fieldGroup: [
+          {
+            className: 'flex-3',
+            type: 'input',
+            key: 'Quadratmeter',
+            templateOptions: {
+              type: 'number',
+              label: 'Quadratmeter'
+
+            },
+          },
+        ]
+      },
+      {
+        templateOptions: { label: 'Absicherung' },
+        fieldGroupClassName: 'display-flex',
+        fieldGroup: [
+
+
+          {
+            className: '',
+            type: 'input',
+            key: 'geburtsdatum',
+            templateOptions: {
+              type: 'date',
+              label: 'Geburtsdatum'
+
+            },
+          },
+        ],
+      },
+      {
+        fieldGroupClassName: 'display-flex',
         templateOptions: { label: 'Persönliche Daten' },
         fieldGroup: [
+
           {
             className: 'col-5',
             fieldGroup: [
@@ -70,35 +105,17 @@ export class MultiStepGridComponent  {
               },
             ],
           },
-        ]
-      },
-      {
-        templateOptions: { label: 'Bezahlung' },
-        fieldGroupClassName: 'display-flex',
-        fieldGroup: [
-
-
-          {
-            className: 'flex-3',
-            type: 'input',
-            key: 'geburtsdatum',
-            templateOptions: {
-              type: 'date',
-              label: 'Geburtsdatum'
-
-            },
-          },
         ],
       },
       {
-        templateOptions: { label: 'Tarifierung' },
-        fieldGroupClassName: 'display-flex',
+        templateOptions: { label: 'Zahlweise' },
         fieldGroup: [
           {
-            key: 'country',
+            key: 'day',
             type: 'input',
             templateOptions: {
-              label: 'Country',
+              type: 'date',
+              label: 'Day of the trip',
               required: true,
             },
           },

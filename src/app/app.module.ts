@@ -17,7 +17,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { FormlyGridComponent } from './formly-grid/formly-grid.component';
 import { SharedMaterialModule } from './shared-material.module';
 import { FormlyGridMaterialComponent } from './formly-grid-material/formly-grid-material.component';
-
+import { PanelWrapperComponent } from './multi-step-grid/panel-wrapper.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +42,10 @@ import { FormlyGridMaterialComponent } from './formly-grid-material/formly-grid-
       ],
       types: [
         { name: 'stepper', component: FormlyFieldStepper, wrappers: [] },
-      ]
+      ],
+      wrappers: [
+        { name: 'panel', component: PanelWrapperComponent },
+      ],
      }),
     FormlyMaterialModule,
   ],

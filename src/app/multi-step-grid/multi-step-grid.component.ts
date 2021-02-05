@@ -127,9 +127,7 @@ export class MultiStepGridComponent {
           fieldGroup: [
             {
               wrappers: ['panel'],
-              templateOptions: {
-                label: 'Perönliche daten',
-              },
+              templateOptions: {label: 'Perönliche daten'},
             },
             {
               className: 'display-flex',
@@ -190,11 +188,7 @@ export class MultiStepGridComponent {
 
             {
               wrappers: ['panel'],
-              templateOptions: {
-                label: 'Glas-Versicherung',
-              },
-            },
-            {
+              templateOptions: {label: 'Glas-Versicherung'},
               className:'displayFlex',
               fieldGroup:[
                 {
@@ -237,11 +231,7 @@ export class MultiStepGridComponent {
             },
             {
               wrappers: ['panel'],
-              templateOptions: {
-                label: 'Vertrag',
-              },
-            },
-            {
+              templateOptions: {label: 'Vertrag'},
               className:'displayFlex',
               fieldGroup:[
                 {

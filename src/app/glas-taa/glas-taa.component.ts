@@ -1,22 +1,12 @@
-import {Component} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {FormlyFieldConfig} from '@ngx-formly/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router,NavigationEnd  } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-glas-taa',
+  templateUrl: './glas-taa.component.html',
+  styleUrls: ['./glas-taa.component.scss']
 })
-export class AppComponent {
+export class GlasTaaComponent implements OnInit {
 
-
-
-  constructor(private route: ActivatedRoute, public router: Router) {
-
-  }
   title = 'taa-stepper';
   isLinear = true;
 
@@ -31,10 +21,13 @@ export class AppComponent {
   selbstBeteiligung: number = 1.2;
   vertragslänge: number = 1;
   zahlweise: number = 1;
-  routingName: any;
+
+  wohnraum: string ="Einfamilienhaus";
+  selbstBeteiligungBetrag:string = "150"
+  vertragsdauer:string ="1 Jahr"
 
 
-
+  constructor() {}
 
 
   anreden: Anrede[] = [
@@ -45,10 +38,7 @@ export class AppComponent {
   ];
 
   ngOnInit() {
-    this.preisBerechner();
-    console.log(this.router.url);
-    console.log(window.location.href);
-
+    this.preisBerechner()
   }
   preisBerechner() {
     this.betrag =
@@ -73,16 +63,19 @@ export class AppComponent {
     );
     console.log(this.betrag);
   }
-  haus(value: number) {
+  haus(value: number, wohn:string) {
     this.hausart = value;
+    this.wohnraum =wohn;
     this.preisBerechner();
   }
-  onSelbst(value: number) {
+  onSelbst(value: number,selb:string) {
     this.selbstBeteiligung = value;
+    this.selbstBeteiligungBetrag =selb
     this.preisBerechner();
   }
-  onDauer(value: number) {
+  onDauer(value: number,val:string) {
     this.vertragslänge = value;
+    this.vertragsdauer =val;
     this.preisBerechner();
   }
   onZahlweise(value: number) {

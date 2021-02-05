@@ -1,0 +1,232 @@
+<button mat-raised-button></button>
+
+<h1 class="betrag">Ihre Glasversicherung beträgt {{ betrag | number: '1.2-2' }} € {{ zeitraum }}</h1>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step >
+    <form >
+      <ng-template matStepLabel>Einstieg</ng-template>
+      <div class="inhalt grid-container-einstieg">
+        <h2 class="  inhaltMitte uberschrift" >Was möchten Sie versichern</h2>
+        <div  class=" inhaltMitte" >
+        <mat-button-toggle-group
+          #group="matButtonToggleGroup"
+          value="Einfamilien"
+        >
+          <mat-button-toggle
+            value="Einfamilien"
+            (click)="haus(0.9,'Einfamilienhaus')"
+            aria-label="Haus"
+          >
+            Einfamilienhaus
+            <mat-icon>house</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle
+            value="Wohnung"
+            (click)="haus(1.1,'Wohnung')"
+            aria-label="Wohnung"
+          >
+            Wohnung
+            <mat-icon>apartment</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+        <br />
+        <h2 class=" inhaltMitte uberschrift" >Wohnfläche</h2>
+        <div class=" inhaltMitte" >
+        <mat-form-field >
+          <mat-label>quadratmeter</mat-label>
+          <input
+            (blur)="preisBerechner()"
+            matInput
+            type="number"
+            required
+            [(ngModel)]="wohnflaeche"
+            name="wohnflaeche"
+            placeholder="100"
+          />
+        </mat-form-field>
+        <label for="sMInput">m&#178;</label>
+      </div>
+        <div class="progBut" >
+          <button mat-raised-button matStepperNext class="weiterButton " >
+            Weiter
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step label="Absicherung">
+    <form>
+      <div class="inhalt ">
+      <h2 class="inhaltMitte uberschrift">Selbstbeteiligung</h2>
+      <div class="inhaltMitte">
+      <mat-button-toggle-group #group="matButtonToggleGroup" value="150">
+        <mat-button-toggle class="check-icon" value="0" (click)="onSelbst(1.5,'Keine Selbstbeteiligung')" aria-label="0">
+          0 €
+        </mat-button-toggle>
+        <mat-button-toggle value="150" (click)="onSelbst(1.2,'150€')" aria-label="150">
+          150 €
+        </mat-button-toggle>
+        <mat-button-toggle value="250" (click)="onSelbst(1.1, '250€')" aria-label="250">
+          250 €
+        </mat-button-toggle>
+        <mat-button-toggle value="500" (click)="onSelbst(1.0,'500€')" aria-label="500">
+          500 €
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br>
+      <div class="progBut">
+        <button mat-raised-button matStepperPrevious class="backButton">
+          Zurück
+        </button>
+        <button mat-raised-button matStepperNext class="weiterButton">
+          Weiter
+        </button>
+      </div>
+    </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Persönliches</ng-template>
+      <div class=" inhalt ">
+        <div class="grid-container">
+        <div class="anrede">
+          <mat-form-field appearance="fill">
+            <mat-label>Anrede</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let anrede of anreden" [value]="anrede.value">
+                {{ anrede.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="name">
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+        <div class="vorname">
+          <mat-form-field appearance="fill">
+            <mat-label>Vorname</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+
+        <div class="firma">
+          <mat-form-field appearance="fill">
+            <mat-label>Firma</mat-label>
+            <input matInput  />
+          </mat-form-field>
+        </div>
+
+        <div class="str">
+          <mat-form-field appearance="fill">
+            <mat-label>Straße und Hausnummer</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+        <div class="plz">
+          <mat-form-field appearance="fill">
+            <mat-label>Postleitzahl</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+
+        <div class="wohort">
+          <mat-form-field appearance="fill">
+            <mat-label>Wohnort</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+        <div class="tele">
+          <mat-form-field appearance="fill">
+            <mat-label>Telefonnummer</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+
+        <div class="email">
+          <mat-form-field appearance="fill">
+            <mat-label>E-Mail</mat-label>
+            <input matInput required/>
+          </mat-form-field>
+        </div>
+      </div>
+<br>
+      <div class="progBut">
+        <button mat-raised-button matStepperPrevious class="backButton">
+          Zurück
+        </button>
+        <button mat-raised-button matStepperNext class="weiterButton">
+          Weiter
+        </button>
+      </div>
+    </div>
+
+    </form>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Zahlung</ng-template>
+      <div class="inhalt ">
+      <h2 class="inhaltMitte uberschrift">Vertragslänge</h2>
+      <div class="inhaltMitte">
+      <mat-button-toggle-group #group="matButtonToggleGroup" value="jahr">
+        <mat-button-toggle value="jahr" (click)="onDauer(1,'1 Jahr')">
+          1 Jahr
+        </mat-button-toggle>
+        <mat-button-toggle value="dreijahre" (click)="onDauer(0.95,'3 Jahre')">
+          3 Jahre (5% Rabatt)
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+      <br>
+      <h2 class="inhaltMitte uberschrift">Zahlweise</h2>
+      <div class="inhaltMitte">
+      <mat-button-toggle-group #group="matButtonToggleGroup" value="Monatlich">
+        <mat-button-toggle value="Monatlich" (click)="onZahlweise(1)">
+          Monatlich
+        </mat-button-toggle>
+        <mat-button-toggle value="Jährlich" (click)="onZahlweise(12)">
+          Jährlich(3%)
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br>
+      <div class="progBut">
+        <button mat-raised-button matStepperPrevious class="backButton">
+          Zurück
+        </button>
+        <button mat-raised-button matStepperNext class="weiterButton">
+          Weiter
+        </button>
+      </div>
+    </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Übersicht</ng-template>
+    <div class="inhalt">
+    <h2 class="inhaltMitte uberschrift">Übersicht</h2>
+    <div >
+      <p>Ihr Wohnraum: {{wohnraum}}</p>
+      <p>Fläche: {{wohnflaeche}}</p>
+      <p>Selbstbeteiligung:{{selbstBeteiligungBetrag}}</p>
+      <p>Vertragsdauer:{{vertragsdauer}}</p>
+      <p>Ihr Preis: {{betrag | number: '1.2-2' }} € {{zeitraum}}</p>
+
+    </div>
+    <div class="progBut">
+      <button mat-raised-button matStepperPrevious class="backButton">
+        Zurück
+      </button>
+      <button mat-raised-button (click)="stepper.reset()">Absenden</button>
+    </div>
+  </div>
+  </mat-step>
+</mat-horizontal-stepper>

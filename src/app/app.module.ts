@@ -18,6 +18,11 @@ import { FormlyGridComponent } from './formly-grid/formly-grid.component';
 import { SharedMaterialModule } from './shared-material.module';
 import { FormlyGridMaterialComponent } from './formly-grid-material/formly-grid-material.component';
 import { PanelWrapperComponent } from './multi-step-grid/panel-wrapper.component';
+import { GlasTaaComponent } from './glas-taa/glas-taa.component';
+import { GxyzTaaComponent } from './gxyz-taa/gxyz-taa.component';
+
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +30,12 @@ import { PanelWrapperComponent } from './multi-step-grid/panel-wrapper.component
     FormlyFieldStepper,
     MultiStepGridComponent,
     FormlyGridComponent,
-    FormlyGridMaterialComponent
+    FormlyGridMaterialComponent,
+    GlasTaaComponent,
+    GxyzTaaComponent
   ],
   imports: [
+    FormsModule,
     SharedMaterialModule,
     BrowserModule,
     AppRoutingModule,

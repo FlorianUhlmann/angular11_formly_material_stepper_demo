@@ -1,0 +1,85 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.betrag {
+  text-align: center;
+  color: #234b8d;
+  font-family: "HelveticaNeueW02-57CnMd", Arial, sans-serif;
+  margin-top: 2vh;
+  line-height: 1.6em;
+}
+
+mat-form-field + mat-form-field {
+  margin-left: 10%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1froii0;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "anrede anrede"
+    "name vorname"
+    "firma firma"
+    "str plz"
+    "wohort tele"
+    "email ."
+}
+.anrede {
+  grid-area: anrede;
+}
+.name {
+  grid-area: name;
+}
+.vorname {
+  grid-area: vorname;
+}
+.firma {
+  grid-area: firma;
+}
+.str {
+  grid-area: str;
+}
+.plz {
+  grid-area: plz;
+}
+.wohort {
+  grid-area: wohort;
+}
+.tele {
+  grid-area: tele;
+}
+.email {
+  grid-area: email;
+}
+
+.inhalt {
+  max-width: 769px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inhaltMitte{
+  text-align: center;
+}
+
+
+.progBut{
+  text-align: end;
+  margin-right: 20%;
+}
+
+
+button + button{
+  margin-left: 40%;
+}
+
+.uberschrift{
+  color: #234b8d;
+}

@@ -1,0 +1,205 @@
+<button mat-raised-button></button>
+
+<h1 class="betrag">Ihre XYZ-Versicherung beträgt </h1>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Tarifierung 1</ng-template>
+      <div class="inhalt">
+        <h2 class="headerInStepper">Vorauswahl möglicher Komponenten</h2>
+
+      </div>
+        <br />
+        <!-- toogle buttons -->
+        <div>
+          <mat-button-toggle-group
+          #group="matButtonToggleGroup"
+          value="Einfamilien"
+        >
+          <mat-button-toggle
+            value="Beispiel 1"
+            aria-label="Beispiel 1"
+          >
+          Beispiel 1
+            <mat-icon>adb</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle
+            value="Beispiel 2"
+            aria-label="Beispiel 2"
+          >
+          Beispiel 2
+            <mat-icon>star</mat-icon>
+          </mat-button-toggle>
+        <mat-button-toggle
+          value="Beispiel 3"
+          aria-label="Beispiel 3"
+        >
+        Beispiel 3
+          <mat-icon>code</mat-icon>
+        </mat-button-toggle>
+        </mat-button-toggle-group>
+        </div>
+        <br>
+        <!-- radio buttons -->
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1">Option 1</mat-radio-button>
+          <mat-radio-button value="2">Option 2</mat-radio-button>
+        </mat-radio-group>
+        <br/>
+        <br/>
+        <!-- checkboxen -->
+        <section class="example-section">
+          <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+          <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+        </section>
+
+        <section class="example-section">
+          <span class="example-list-section">
+            <mat-checkbox class="example-margin"
+                          [checked]="allComplete"
+                          [color]="task.color"
+                          [indeterminate]="someComplete()"
+                          (change)="setAll($event.checked)">
+              {{task.name}}
+            </mat-checkbox>
+          </span>
+         <!--  <span class="example-list-section">
+            <ul>
+              <li *ngFor="let subtask of task.subtasks">
+                <mat-checkbox [(ngModel)]="subtask.completed"
+                name="subtask.completed"
+                              [color]="subtask.color"
+                              (ngModelChange)="updateAllComplete()">
+                  {{subtask.name}}
+                </mat-checkbox>
+              </li>
+            </ul>
+          </span> -->
+        </section>
+        <br>
+        <!-- toggle Switch -->
+
+        <!-- Inputfeld -->
+        <mat-form-field >
+        <mat-label>Beispiel Input</mat-label>
+          <input
+            matInput
+            required
+            placeholder="Beispiel"
+          />
+        </mat-form-field>
+<br>
+        <!-- Datumsfeld -->
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <!-- Dropdown -->
+        <!-- Evtl.Pakete (basic, premium , deluxe) -->
+
+
+
+        <div>
+          <button mat-raised-button matStepperNext class="weiterButton">
+            Weiter
+          </button>
+        </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Persönliches</ng-template>
+      <div class="grid-container">
+        <div class="anrede">
+          <mat-form-field appearance="fill">
+            <mat-label>Anrede</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let anrede of anreden" [value]="anrede.value">
+                {{ anrede.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="name">
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+        <div class="vorname">
+          <mat-form-field appearance="fill">
+            <mat-label>Vorname</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+
+        <div class="firma">
+          <mat-form-field appearance="fill">
+            <mat-label>Firma</mat-label>
+            <input matInput  />
+          </mat-form-field>
+        </div>
+
+        <div class="str">
+          <mat-form-field appearance="fill">
+            <mat-label>Straße und Hausnummer</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+        <div class="plz">
+          <mat-form-field appearance="fill">
+            <mat-label>Postleitzahl</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+
+        <div class="wohort">
+          <mat-form-field appearance="fill">
+            <mat-label>Wohnort</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+        <div class="tele">
+          <mat-form-field appearance="fill">
+            <mat-label>Telefonnummer</mat-label>
+            <input matInput required />
+          </mat-form-field>
+        </div>
+
+        <div class="email">
+          <mat-form-field appearance="fill">
+            <mat-label>E-Mail</mat-label>
+            <input matInput required/>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <button mat-raised-button matStepperPrevious class="backButton">
+          Zurück
+        </button>
+        <button mat-raised-button matStepperNext class="weiterButton">
+          Weiter
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Zahlung</ng-template>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Übersicht</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-raised-button matStepperPrevious class="backButton">
+        Zurück
+      </button>
+      <button mat-raised-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

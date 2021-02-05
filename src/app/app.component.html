@@ -1,8 +1,27 @@
 
-<mat-divider></mat-divider>
-<h1>stepper</h1>
-<app-multi-step></app-multi-step>
 
+
+<div class="header">
+  <img routerLink="" style=" cursor: pointer;" src="./assets/aia-logo_lp.png" alt="Logo-AIA" />
+</div>
+<!-- <app-glas-taa></app-glas-taa> -->
+<router-outlet></router-outlet>
+{{routingName}}
+<div class="flex-container" *ngIf="this.router.url === '/'">
+  <div>
+      <div>
+        <button mat-raised-button routerLink="glas-versicherung" color="primary">Glas-Versicherung</button>
+      </div>
+      <div>
+        <button mat-raised-button routerLink="xyz-versicherung" color="primary">Zahnzusatz</button>
+      </div>
+      <div>
+        <button mat-raised-button routerLink="glas-versicherung-formly" color="primary">Glas-Versicherung<br>Formly</button>
+      </div>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
 <mat-divider></mat-divider>
 <h1> grid</h1>
 <app-formly-grid></app-formly-grid>
@@ -10,9 +29,3 @@
 <mat-divider></mat-divider>
 <h1> grid with material</h1>
 <app-formly-grid-material></app-formly-grid-material>
-
-
-<mat-divider></mat-divider>
-<h1>stepper with grid</h1>
-<app-multi-step-grid></app-multi-step-grid>
-

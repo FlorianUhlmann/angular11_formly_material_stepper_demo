@@ -11,22 +11,22 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
       <formly-field [field]="step"></formly-field>
 
       <div>
-        <button matStepperPrevious *ngIf="index !== 0"
-          class="btn btn-primary"
+        <button mat-raised-button matStepperPrevious *ngIf="index !== 0"
+          class=" backButton"
           type="button">
           Back
         </button>
 
-        <button matStepperNext *ngIf="!last"
-          class="btn btn-primary" type="button"
+        <button mat-raised-button matStepperNext *ngIf="!last"
+          class=" weiterButton" type="button"
           [disabled]="!isValid(step)">
           Next
         </button>
 
-        <button *ngIf="last" class="btn btn-primary"
+        <button  mat-raised-button matStepperNext *ngIf="last" class="submitButton"
           [disabled]="!form.valid"
           type="submit">
-          Submit
+          Ja, Vertrag abschließen
         </button>
       </div>
     </mat-step>

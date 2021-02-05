@@ -1,4 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.weiterButton{
+  background-color: #ef7a2e;
+  box-shadow: 0 5px 10px rgba(58,80,72,0.3);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: #FFF;
+}
+
+.backButton{
+
+  box-shadow: 0 5px 10px rgba(58,80,72,0.3);
+
+  border: 2px solid #97aaeb;
+  border-radius: 6px;
+  color: #234b8d;
+}
+
+.submitButton{
+
+  box-shadow: 0 5px 10px rgba(58,80,72,0.3);
+
+  border: 2px solid #97aaeb;
+  border-radius: 6px;
+  color: #FFF;
+  background-color: #234b8d;
+}
+
+.mat-button-toggle {
+  background-color: #e2e2e2;
+  color: #666, default-contrast;
+}
+
+.mat-button-toggle-checked {
+  background-color: #234b8d;
+  color: #FFF !important;
+}
+
+.headerInStepper{
+  text-align: center;
+}

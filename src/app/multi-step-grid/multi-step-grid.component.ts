@@ -263,7 +263,7 @@ export class MultiStepGridComponent {
                   type: 'input',
                   templateOptions: {
                     type: 'daten',
-                    readonly:true,
+                    readonly:false,
                     label: 'Zahlweise',
                   },
                 },
@@ -275,10 +275,8 @@ export class MultiStepGridComponent {
                     label: 'Zahlungsmethode',
                   },
                 },
-
               ]
             }
-
           ],
         },
       ],

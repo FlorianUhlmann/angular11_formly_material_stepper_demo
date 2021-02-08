@@ -78,17 +78,17 @@ export class MultiStepGridComponent {
               fieldGroup: [
                 {
                   type: 'input',
-                  key: 'firstName',
+                  key: 'name',
                   templateOptions: {
-                    label: 'First Name',
+                    label: 'Name',
                   },
                 },
 
                 {
                   type: 'input',
-                  key: 'lastName',
+                  key: 'nachName',
                   templateOptions: {
-                    label: 'Last Name',
+                    label: 'Nachname',
                   },
                 },
               ],
@@ -98,24 +98,24 @@ export class MultiStepGridComponent {
               fieldGroup: [
                 {
                   type: 'input',
-                  key: 'street',
+                  key: 'strasze',
                   templateOptions: {
-                    label: 'Street',
+                    label: 'Straße und Hausnummer',
                   },
                 },
                 {
                   type: 'input',
-                  key: 'cityName',
+                  key: 'wohnOrt',
                   templateOptions: {
-                    label: 'City',
+                    label: 'Wohnort',
                   },
                 },
                 {
                   type: 'input',
-                  key: 'zip',
+                  key: 'postLeitZahl',
                   templateOptions: {
                     type: 'number',
-                    label: 'Zip',
+                    label: 'Postleitzahl',
                   },
                 },
               ],
@@ -127,11 +127,39 @@ export class MultiStepGridComponent {
           className: 'flex-1',
           fieldGroup: [
             {
-              key: 'day',
+              key: 'bezahlweise',
+              type: 'radio',
+              templateOptions: {
+                label: 'Wie möchten Sie bezahlen?',
+                placeholder: 'Placeholder',
+                description: 'Description',
+                required: true,
+                options: [
+                  { value: 'jarhrlich', label: 'jährlich' },
+                  { value: 'monatlich', label: 'monatlich' },
+                ],
+              },
+            },
+              {
+                key: 'zahlungsMethode',
+                type: 'radio',
+                templateOptions: {
+                  label: 'Zahlungsmethode',
+                  placeholder: 'Placeholder',
+                  description: 'Description',
+                  required: true,
+                  options: [
+                    { value: 'sepa', label: 'SEPA lastschrift' },
+                    { value: 'rechnung', label: 'Rechnung ( Überweisung )' },
+                  ],
+                },
+            },
+            {
+              key: 'iban',
               type: 'input',
               templateOptions: {
-                type: 'date',
-                label: 'Day of the trip',
+                type: 'daten',
+                label: 'IBAN',
                 required: true,
               },
             },

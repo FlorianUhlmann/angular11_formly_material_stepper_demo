@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormGroup, NgModel } from '@angular/forms';
+import { FormlyFormOptions, FormlyFieldConfig, FieldType } from '@ngx-formly/core';
+import { type } from 'os';
+import { Key } from 'protractor';
 
 @Component({
   selector: 'app-multi-step-grid',
   template: `
+    <button mat-raised-button></button>
+    <h1 class="betrag">Ihre Glasversicherung beträgt {{ model.qMeter | number: '1.2-2' }} €</h1>
+    {{model|json}}
     <form [formGroup]="form" (ngSubmit)="submit()">
       <formly-form
         [model]="model"
@@ -19,7 +24,6 @@ export class MultiStepGridComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-
   fields: FormlyFieldConfig[] = [
     {
       type: 'stepper',
@@ -29,13 +33,18 @@ export class MultiStepGridComponent {
           templateOptions: { label: 'Einstieg' },
           fieldGroup: [
             {
-              className: 'flex-item',
+              className: 'inhaltMitte',
               type: 'input',
-              key: 'Quadratmeter',
+              key: 'qMeter',
+              defaultValue:'100',
               templateOptions: {
                 type: 'number',
                 label: 'Quadratmeter',
+                placeholder: '100',
               },
+              modelOptions:{
+                updateOn:'blur'
+              }
             },
           ],
         },
@@ -45,11 +54,17 @@ export class MultiStepGridComponent {
           fieldGroup: [
             {
               className: '',
-              type: 'input',
-              key: 'geburtsdatum',
+              type: 'select',
+              key: 'selbstbeteiligung',
               templateOptions: {
-                type: 'date',
-                label: 'Geburtsdatum',
+                label: 'Selbstbeteiligung',
+                options: [
+                  { label: 'keine Selbstbeteiligung', value: 'noEuros' },
+                  { label: '150 €', value: '150Euros' },
+                  { label: '250 €', value: '250Euros' },
+                  { label: '500 €', value: '500Euros' },
+                ],
+                required: true,
               },
             },
           ],
@@ -127,7 +142,7 @@ export class MultiStepGridComponent {
           fieldGroup: [
             {
               wrappers: ['panel'],
-              templateOptions: {label: 'Perönliche daten'},
+              templateOptions: { label: 'Perönliche daten' },
             },
             {
               className: 'display-flex',
@@ -188,16 +203,16 @@ export class MultiStepGridComponent {
 
             {
               wrappers: ['panel'],
-              templateOptions: {label: 'Glas-Versicherung'},
-              className:'displayFlex',
-              fieldGroup:[
+              templateOptions: { label: 'Glas-Versicherung' },
+              className: 'displayFlex',
+              fieldGroup: [
                 {
                   key: 'day',
                   type: 'input',
                   templateOptions: {
                     type: 'daten',
                     label: 'Punkt 1',
-                    readonly:true
+                    readonly: true,
                   },
                 },
                 {
@@ -206,7 +221,7 @@ export class MultiStepGridComponent {
                   templateOptions: {
                     type: 'daten',
                     label: 'Prämie',
-                    readonly:true
+                    readonly: true,
                   },
                 },
                 {
@@ -215,7 +230,7 @@ export class MultiStepGridComponent {
                   templateOptions: {
                     type: 'daten',
                     label: 'Deckungssumme',
-                    readonly:true
+                    readonly: true,
                   },
                 },
                 {
@@ -224,22 +239,22 @@ export class MultiStepGridComponent {
                   templateOptions: {
                     type: 'daten',
                     label: 'Selbstbeteiligung',
-                    readonly:true
+                    readonly: true,
                   },
                 },
-              ]
+              ],
             },
             {
               wrappers: ['panel'],
-              templateOptions: {label: 'Vertrag'},
-              className:'displayFlex',
-              fieldGroup:[
+              templateOptions: { label: 'Vertrag' },
+              className: 'displayFlex',
+              fieldGroup: [
                 {
                   type: 'input',
                   defaultValue: this.model?.lastname,
                   templateOptions: {
                     type: 'daten',
-                    readonly:true,
+                    readonly: true,
                     label: 'Vertragsbegin',
                   },
                 },
@@ -247,7 +262,7 @@ export class MultiStepGridComponent {
                   type: 'input',
                   templateOptions: {
                     type: 'daten',
-                    readonly:true,
+                    readonly: true,
                     label: 'Vertragslaufzeit',
                   },
                 },
@@ -255,7 +270,7 @@ export class MultiStepGridComponent {
                   type: 'input',
                   templateOptions: {
                     type: 'daten',
-                    readonly:true,
+                    readonly: true,
                     label: 'Hauptfälligkeit',
                   },
                 },
@@ -263,7 +278,7 @@ export class MultiStepGridComponent {
                   type: 'input',
                   templateOptions: {
                     type: 'daten',
-                    readonly:false,
+                    readonly: false,
                     label: 'Zahlweise',
                   },
                 },
@@ -271,17 +286,18 @@ export class MultiStepGridComponent {
                   type: 'input',
                   templateOptions: {
                     type: 'daten',
-                    readonly:true,
+                    readonly: true,
                     label: 'Zahlungsmethode',
                   },
                 },
-              ]
-            }
+              ],
+            },
           ],
         },
       ],
     },
   ];
+  betrag: number = this.model.qMeter;
 
   submit() {
     alert(JSON.stringify(this.model));

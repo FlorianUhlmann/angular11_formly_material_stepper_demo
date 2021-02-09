@@ -8,7 +8,7 @@ import { Key } from 'protractor';
   selector: 'app-multi-step-grid',
   template: `
     <button mat-raised-button></button>
-    <h1 class="betrag">Ihre Glasversicherung beträgt {{ model.qMeter | number: '1.2-2' }} €</h1>
+    <h1 class="betrag" (click)="probe()">Ihre Glasversicherung beträgt {{ betrag | number: '1.2-2' }} €</h1>
     {{model|json}}
     <form [formGroup]="form" (ngSubmit)="submit()">
       <formly-form
@@ -21,6 +21,8 @@ import { Key } from 'protractor';
   `,
 })
 export class MultiStepGridComponent {
+  betrag: number | undefined ;
+  num:number = 1
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -78,17 +80,17 @@ export class MultiStepGridComponent {
               fieldGroup: [
                 {
                   type: 'input',
-                  key: 'name',
+                  key: 'firstName',
                   templateOptions: {
-                    label: 'Name',
+                    label: 'First Name',
                   },
                 },
 
                 {
                   type: 'input',
-                  key: 'nachName',
+                  key: 'lastName',
                   templateOptions: {
-                    label: 'Nachname',
+                    label: 'Last Name',
                   },
                 },
               ],
@@ -98,24 +100,24 @@ export class MultiStepGridComponent {
               fieldGroup: [
                 {
                   type: 'input',
-                  key: 'strasze',
+                  key: 'street',
                   templateOptions: {
-                    label: 'Straße und Hausnummer',
+                    label: 'Street',
                   },
                 },
                 {
                   type: 'input',
-                  key: 'wohnOrt',
+                  key: 'cityName',
                   templateOptions: {
-                    label: 'Wohnort',
+                    label: 'City',
                   },
                 },
                 {
                   type: 'input',
-                  key: 'postLeitZahl',
+                  key: 'zip',
                   templateOptions: {
                     type: 'number',
-                    label: 'Postleitzahl',
+                    label: 'Zip',
                   },
                 },
               ],
@@ -127,39 +129,11 @@ export class MultiStepGridComponent {
           className: 'flex-1',
           fieldGroup: [
             {
-              key: 'bezahlweise',
-              type: 'radio',
-              templateOptions: {
-                label: 'Wie möchten Sie bezahlen?',
-                placeholder: 'Placeholder',
-                description: 'Description',
-                required: true,
-                options: [
-                  { value: 'jarhrlich', label: 'jährlich' },
-                  { value: 'monatlich', label: 'monatlich' },
-                ],
-              },
-            },
-              {
-                key: 'zahlungsMethode',
-                type: 'radio',
-                templateOptions: {
-                  label: 'Zahlungsmethode',
-                  placeholder: 'Placeholder',
-                  description: 'Description',
-                  required: true,
-                  options: [
-                    { value: 'sepa', label: 'SEPA lastschrift' },
-                    { value: 'rechnung', label: 'Rechnung ( Überweisung )' },
-                  ],
-                },
-            },
-            {
-              key: 'iban',
+              key: 'day',
               type: 'input',
               templateOptions: {
-                type: 'daten',
-                label: 'IBAN',
+                type: 'date',
+                label: 'Day of the trip',
                 required: true,
               },
             },
@@ -325,8 +299,9 @@ export class MultiStepGridComponent {
       ],
     },
   ];
-  betrag: number = this.model.qMeter;
-
+  probe(){
+  this.betrag = this.model.qMeter
+  }
   submit() {
     alert(JSON.stringify(this.model));
   }

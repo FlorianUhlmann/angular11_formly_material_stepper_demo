@@ -7,16 +7,16 @@
 <!-- <app-glas-taa></app-glas-taa> -->
 <router-outlet></router-outlet>
 {{routingName}}
-<div class="flex-container" *ngIf="this.router.url === '/'">
-  <div>
+<div class="flex-container inhalt" *ngIf="this.router.url === '/'">
+  <div class="inhaltMitte">
       <div>
-        <button mat-raised-button routerLink="glas-versicherung" color="primary">Glas-Versicherung</button>
+        <button mat-raised-button routerLink="glas-versicherung" class="menuButton">Glas-Versicherung</button>
       </div>
       <div>
-        <button mat-raised-button routerLink="xyz-versicherung" color="primary">Zahnzusatz</button>
+        <button mat-raised-button routerLink="xyz-versicherung" class="menuButton">Zahnzusatz</button>
       </div>
       <div>
-        <button mat-raised-button routerLink="glas-versicherung-formly" color="primary">Glas-Versicherung<br>Formly</button>
+        <button mat-raised-button routerLink="glas-versicherung-formly" class="menuButton">Glas-Versicherung<br>Formly</button>
       </div>
     </div>
 </div>

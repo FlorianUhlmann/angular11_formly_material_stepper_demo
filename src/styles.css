@@ -46,3 +46,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   text-align: center;
 }
 
+.inhalt {
+  max-width: 769px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inhaltMitte{
+  text-align: center;
+}
